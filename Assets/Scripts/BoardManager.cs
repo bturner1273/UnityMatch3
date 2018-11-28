@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour {
     [SerializeField] private GameObject[] peices;
+    [SerializeField] private float gemSpacing;
     private static int width = 16;
     private static int height = 13;
     GameObject[][] board = new GameObject[height][];
@@ -40,9 +41,9 @@ public class BoardManager : MonoBehaviour {
                          (y >= 3 &&
                          board[y-1][x].GetComponent<HasColorType>().getColorType() == randomToAddColorType &&
                          board[y-2][x].GetComponent<HasColorType>().getColorType() == randomToAddColorType));
-  
-                board[y][x] = randomToAdd;
-                Instantiate(randomToAdd, new Vector3(x*.8f, y*.8f), Quaternion.identity);
+
+                GameObject toAdd = Instantiate(randomToAdd, new Vector3(x * gemSpacing, y * gemSpacing), Quaternion.identity);
+                board[y][x] = toAdd;
             }
         }
     }
@@ -53,6 +54,7 @@ public class BoardManager : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             int minDistanceXIndex = 1;
             int minDistanceYIndex = 1;
             for (int y = 1; y < height; y++)

@@ -285,3 +285,4 @@ MonoBehaviour:
   - {fileID: 1742240615566998, guid: 0649aa617feea3a4db5079ed7fabdecc, type: 2}
   - {fileID: 1425060423588260, guid: 65738540387224e499d24026ff0f41e0, type: 2}
   - {fileID: 1663813256307246, guid: 916d6feb350d0af4ca4b3256f0ac9b72, type: 2}
+  gemSpacing: 0.8
